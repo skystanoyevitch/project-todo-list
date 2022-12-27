@@ -110,3 +110,8 @@ const TaskCount = styled.span`
 	margin: 10px;
 `;
 const Tasks = styled.div``;
+
+const LIST = styled.li`
+	list-style: none;
+	text-decoration: line-through;
+`;
