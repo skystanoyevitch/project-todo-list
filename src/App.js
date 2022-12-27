@@ -73,7 +73,7 @@ function App() {
 											listStyle: "none",
 											textDecoration:
 												todo.complete && "line-through",
-										}}
+                    }}
 									>
 										{todo.task}
 									</TaskList>
