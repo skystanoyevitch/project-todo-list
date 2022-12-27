@@ -44,12 +44,14 @@ function App() {
 		<>
 			<Container>
 				<div>
-					<h2>Todo List</h2>
-					<Text
-						value={input}
-						onInput={(e) => setInput(e.target.value)}
-					/>
-					<Button onClick={() => handleClick()}>Add</Button>
+					<Title>Project Todo List</Title>
+					<InputContainer>
+						<Text
+							value={input}
+							onInput={(e) => setInput(e.target.value)}
+						/>
+						<Button onClick={() => handleClick()}>Add</Button>
+					</InputContainer>
 					<Tasks>
 						<TaskCount>
 							<b>Pending Tasks</b>{" "}
@@ -79,7 +81,7 @@ function App() {
 							})}
 						</ul>
 					</div>
-					<Button>Clear</Button>
+					{/* <Button>Clear</Button> */}
 				</div>
 			</Container>
 		</>
@@ -90,23 +92,34 @@ export default App;
 
 // Styles
 const Container = styled.div`
+	margin: auto;
+	width: 50%;
+	max-width: 900px;
+`;
+
+const Title = styled.h1`
+	text-align: center;
+`;
+
+const InputContainer = styled.div`
 	display: flex;
-	align-items: center;
-	flex-direction: column;
+	flex-direction: row;
+	justify-content: center;
 `;
 const Button = styled.button`
-	display: inline-block;
-	flex: 1;
+	padding: 0px 15px 0px 15px;
+	margin-left: 20px;
 	border: none;
-	background-color: teal;
+	background-color: purple;
 	color: white;
-	height: 30px;
-	width: 50px;
-	border-radius: 2px;
+	border-radius: 30px;
 	cursor: pointer;
 `;
 const Text = styled.input`
-	border: 2px solid black;
+	border-radius: 40px;
+	border: 1px solid grey;
+	height: 3rem;
+	width: 15rem;
 `;
 const TaskCount = styled.span`
 	margin: 10px;
