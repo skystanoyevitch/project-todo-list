@@ -53,19 +53,19 @@ function App() {
 						<Button onClick={() => handleClick()}>Add</Button>
 					</InputContainer>
 					<Tasks>
-						<TaskCount>
+						{/* <TaskCount>
 							<b>Pending Tasks</b>{" "}
 							{todoList.length - completedTaskCount}
 						</TaskCount>
 						<TaskCount>
 							<b>Completed Tasks</b> {completedTaskCount}
-						</TaskCount>
+						</TaskCount> */}
 					</Tasks>
 					<div>
 						<ul>
 							{todoList.map((todo) => {
 								return (
-									<li
+									<TaskList
 										complete={todo.complete}
 										id={todo.id}
 										onClick={() => handleComplete(todo.id)}
@@ -76,7 +76,7 @@ function App() {
 										}}
 									>
 										{todo.task}
-									</li>
+									</TaskList>
 								);
 							})}
 						</ul>
@@ -99,6 +99,7 @@ const Container = styled.div`
 
 const Title = styled.h1`
 	text-align: center;
+	color: white;
 `;
 
 const InputContainer = styled.div`
@@ -110,18 +111,31 @@ const Button = styled.button`
 	padding: 0px 15px 0px 15px;
 	margin-left: 20px;
 	border: none;
-	background-color: purple;
+	background-color: #ff7361;
 	color: white;
 	border-radius: 30px;
 	cursor: pointer;
 `;
 const Text = styled.input`
+	font-size: 1.3rem;
+	padding-left: 10px;
 	border-radius: 40px;
 	border: 1px solid grey;
 	height: 3rem;
 	width: 15rem;
 `;
-const TaskCount = styled.span`
-	margin: 10px;
+
+// const TaskCount = styled.span`
+// 	margin: 10px;
+// `;
+
+const TaskList = styled.li`
+	margin: 15px;
+	padding: 15px 15px 15px 25px;
+	background-color: #3e4653;
+	border-radius: 50px;
+	font-size: 2rem;
+	color: white;
+	text-align: left;
 `;
 const Tasks = styled.div``;
