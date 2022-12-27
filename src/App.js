@@ -1,17 +1,18 @@
 import "./App.css";
 import { useState } from "react";
+import "./index.css";
 
 // 3rd party imports
 import styled from "styled-components";
 
 function App() {
 	const [input, setInput] = useState("");
-	const [todolist, setTodolist] = useState([]);
+	const [todoList, setTodolist] = useState([]);
 	const [completedTaskCount, setCompletedTaskCount] = useState(0);
 
 	// Set Todo
 	const handleClick = () => {
-		const id = todolist.length + 1;
+		const id = todoList.length + 1;
 		setTodolist((prev) => [
 			...prev,
 			{
@@ -25,7 +26,7 @@ function App() {
 
 	// Display List of Tasks
 	const handleComplete = (id) => {
-		let list = todolist.map((task) => {
+		let list = todoList.map((task) => {
 			let item = {};
 			if (task.id === id) {
 				if (!task.complete) {
@@ -51,17 +52,18 @@ function App() {
 					<Button onClick={() => handleClick()}>Add</Button>
 					<Tasks>
 						<TaskCount>
-							<b>Pending Tasks</b>
+							<b>Pending Tasks</b>{" "}
+							{todoList.length - completedTaskCount}
 						</TaskCount>
 						<TaskCount>
-							<b>Completed Tasks</b>
+							<b>Completed Tasks</b> {completedTaskCount}
 						</TaskCount>
 					</Tasks>
 					<div>
 						<ul>
-							{todolist.map((todo) => {
+							{todoList.map((todo) => {
 								return (
-									<LIST
+									<li
 										complete={todo.complete}
 										id={todo.id}
 										onClick={() => handleComplete(todo.id)}
@@ -72,7 +74,7 @@ function App() {
 										}}
 									>
 										{todo.task}
-									</LIST>
+									</li>
 								);
 							})}
 						</ul>
@@ -110,8 +112,3 @@ const TaskCount = styled.span`
 	margin: 10px;
 `;
 const Tasks = styled.div``;
-
-const LIST = styled.li`
-	list-style: none;
-	text-decoration: line-through;
-`;
