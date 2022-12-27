@@ -22,6 +22,23 @@ function App() {
 		]);
 		setInput("");
 	};
+
+	// Display List of Tasks
+	const handleComplete = (id) => {
+		let list = todolist.map((task) => {
+			let item = {};
+			if (task.id === id) {
+				if (!task.complete) {
+					setCompletedTaskCount(completedTaskCount + 1);
+				} else {
+					setCompletedTaskCount(completedTaskCount - 1);
+				}
+				item = { ...task, complete: !task.complete };
+			} else item = { ...task };
+			return item;
+		});
+		setTodolist(list);
+	};
 	return (
 		<>
 			<Container>
@@ -41,23 +58,24 @@ function App() {
 						</TaskCount>
 					</Tasks>
 					<div>
-            <ul>
-              {todolist.map((todo) => {
-                return (
-                  <LIST
-                    complete={todo.complete}
-                    id={todo.id}
-                    onClick={() => handleComplete(todo.id)}
-                    style={{
-                      listStyle: "none"
-                      TextDecoration: todo.complete && "line-through"
-                    }}
-                  >
-                    {todo.task}
-                  </LIST>
-                )
-              })}
-            </ul>
+						<ul>
+							{todolist.map((todo) => {
+								return (
+									<LIST
+										complete={todo.complete}
+										id={todo.id}
+										onClick={() => handleComplete(todo.id)}
+										style={{
+											listStyle: "none",
+											textDecoration:
+												todo.complete && "line-through",
+										}}
+									>
+										{todo.task}
+									</LIST>
+								);
+							})}
+						</ul>
 					</div>
 					<Button>Clear</Button>
 				</div>
